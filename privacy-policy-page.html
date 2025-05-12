@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripl7z LLC - Privacy Policy</title>
+    <style>
+        :root {
+            --primary: #0062ff;
+            --secondary: #6c00ff;
+            --dark: #111827;
+            --light: #f3f4f6;
+            --accent: #00d9ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        header {
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            background-color: rgba(17, 24, 39, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .page-header {
+            padding-top: 120px;
+            padding-bottom: 40px;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(17, 24, 39, 0.95), rgba(17, 24, 39, 0.8));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 98, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(108, 0, 255, 0.15) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, white, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .page-subtitle {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #d1d5db;
+        }
+        
+        .content-section {
+            padding: 5rem 0;
+        }
+        
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .legal-content h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin: 2.5rem 0 1.5rem;
+            color: white;
+        }
+        
+        .legal-content h2:first-child {
+            margin-top: 0;
+        }
+        
+        .legal-content h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--accent);
+        }
+        
+        .legal-content p {
+            margin-bottom: 1.5rem;
+            color: #d1d5db;
+        }
+        
+        .legal-content ul, 
+        .legal-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: #d1d5db;
+        }
+        
+        .legal-content li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .legal-content a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .legal-content a:hover {
+            text-decoration: underline;
+        }
+        
+        .legal-date {
+            font-style: italic;
+            color: #9ca3af;
+            margin-bottom: 2.5rem;
+        }
+        
+        footer {
+            padding: 3rem 0;
+            background-color: rgba(17, 24, 39, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--light);
+            font-size: 1.25rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-nav {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .footer-nav a {
+            color: #d1d5db;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-nav a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.875rem;
+            margin-top: 1.5rem;
+        }
+        
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                position: relative;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background-color: var(--dark);
+                padding: 1rem;
+                gap: 1rem;
+                display: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <span>Tripl7z</span>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="sectors.html">Sectors</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Privacy Policy</h1>
+            <p class="page-subtitle">How we collect, use, and protect your information</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container content-container">
+            <div class="legal-content">
+                <p class="legal-date">Last Updated: May 1, 2025</p>
+                
+                <h2>1. Introduction</h2>
+                <p>Tripl7z, LLC ("Tripl7z," "we," "our," or "us") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or otherwise interact with us.</p>
+                <p>Please read this Privacy Policy carefully. By accessing or using our website or services, you acknowledge that you have read, understood, and agree to be bound by all the terms of this Privacy Policy. If you do not agree with our policies and practices, please do not use our website or services.</p>
+                
+                <h2>2. Information We Collect</h2>
+                
+                <h3>2.1 Personal Information</h3>
+                <p>We may collect personal information that you voluntarily provide to us when you:</p>
+                <ul>
+                    <li>Fill out forms on our website, including contact forms</li>
+                    <li>Register for an account or subscribe to our newsletters</li>
+                    <li>Request information or services</li>
+                    <li>Participate in surveys or promotions</li>
+                    <li>Contact us via email, phone, or other communication channels</li>
+                </ul>
+                <p>The types of personal information we may collect include:</p>
+                <ul>
+                    <li>Name, email address, phone number, and address</li>
+                    <li>Organization name and job title</li>
+                    <li>Login credentials (username and password)</li>
+                    <li>Payment information</li>
+                    <li>Preferences and communication history</li>
+                </ul>
+                
+                <h3>2.2 Automatically Collected Information</h3>
+                <p>When you visit our website or use our services, we may automatically collect certain information about your device and usage patterns. This may include:</p>
+                <ul>
+                    <li>IP address and geographic location</li>
+                    <li>Browser type and version</li>
+                    <li>Operating system</li>
+                    <li>Device information</li>
+                    <li>Pages visited and time spent on pages</li>
+                    <li>Referring websites</li>
+                    <li>Click patterns and interactions with our website</li>
+                </ul>
+                
+                <h3>2.3 Cookies and Similar Technologies</h3>
+                <p>We use cookies, web beacons, and similar technologies to enhance your experience on our website, analyze usage patterns, and deliver personalized content. You can manage your cookie preferences through your browser settings, but note that disabling certain cookies may limit the functionality of our website.</p>
+                
+                <h2>3. How We Use Your Information</h2>
+                <p>We may use the information we collect for various purposes, including to:</p>
+                <ul>
+                    <li>Provide, maintain, and improve our website and services</li>
+                    <li>Process transactions and fulfill requests</li>
+                    <li>Communicate with you about our services, updates, and promotions</li>
+                    <li>Respond to your inquiries and provide customer support</li>
+                    <li>Personalize your experience and deliver tailored content</li>
+                    <li>Analyze usage patterns and optimize our website and services</li>
+                    <li>Protect against fraud, unauthorized transactions, and other liabilities</li>
+                    <li>Comply with legal obligations and enforce our terms</li>
+                </ul>
+                
+                <h2>4. Sharing of Your Information</h2>
+                <p>We may share your information with third parties in the following circumstances:</p>
+                <ul>
+                    <li>With service providers who perform services on our behalf, such as hosting providers, payment processors, and analytics services</li>
+                    <li>With business partners and affiliates with whom we collaborate to offer products or services</li>
+                    <li>In connection with a merger, acquisition, or sale of all or a portion of our assets</li>
+                    <li>When required by law, regulation, or legal process</li>
+                    <li>To protect our rights, property, or safety, or that of our users or others</li>
+                    <li>With your consent or at your direction</li>
+                </ul>
+                <p>We do not sell your personal information to third parties for their marketing purposes.</p>
+                
+                <h2>5. Data Security</h2>
+                <p>We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, loss, or alteration. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security.</p>
+                
+                <h2>6. Your Rights and Choices</h2>
+                <p>Depending on your location, you may have certain rights regarding your personal information, including:</p>
+                <ul>
+                    <li>The right to access and receive a copy of your personal information</li>
+                    <li>The right to correct inaccurate or incomplete information</li>
+                    <li>The right to delete your personal information in certain circumstances</li>
+                    <li>The right to restrict or object to processing of your personal information</li>
+                    <li>The right to data portability</li>
+                    <li>The right to withdraw consent</li>
+                </ul>
+                <p>To exercise these rights, please contact us using the information provided in the "Contact Us" section below.</p>
+                
+                <h2>7. Children's Privacy</h2>
+                <p>Our website and services are not directed to children under the age of 16. We do not knowingly collect personal information from children under 16. If you believe we have collected personal information from a child under 16, please contact us so that we can take appropriate steps to remove the information.</p>
+                
+                <h2>8. International Data Transfers</h2>
+                <p>Your information may be transferred to, and processed in, countries other than the country in which you reside. These countries may have data protection laws that are different from the laws of your country. We take appropriate measures to ensure that your personal information receives an adequate level of protection in the countries in which we process it.</p>
+                
+                <h2>9. Changes to This Privacy Policy</h2>
+                <p>We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. The updated policy will be posted on this page with a revised "Last Updated" date. We encourage you to review this Privacy Policy periodically.</p>
+                
+                <h2>10. Contact Us</h2>
+                <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us at:</p>
+                <p>
+                    Tripl7z, LLC<br>
+                    123 Technology Way<br>
+                    Nashville, TN 37201<br>
+                    Email: privacy@tripl7z.com<br>
+                    Phone: (615) 656-7890
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Tripl7z</div>
+                <div class="social-links">
+                    <a href="social-media.html">📱</a>
+                    <a href="https://www.linkedin.com/in/brian-m-b595bb120/">💼</a>
+                    <a href="social-media.html">🐦</a>
+                    <a href="social-media.html">📸</a>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="careers.html">Careers</a>
+                <a href="blog.html">Blog</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Tripl7z, LLC. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

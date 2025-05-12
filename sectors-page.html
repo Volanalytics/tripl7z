@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripl7z LLC - Sectors We Serve</title>
+    <style>
+        :root {
+            --primary: #0062ff;
+            --secondary: #6c00ff;
+            --dark: #111827;
+            --light: #f3f4f6;
+            --accent: #00d9ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        header {
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            background-color: rgba(17, 24, 39, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .cta-button {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .page-header {
+            padding-top: 120px;
+            padding-bottom: 40px;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(17, 24, 39, 0.95), rgba(17, 24, 39, 0.8));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 98, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(108, 0, 255, 0.15) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, white, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .page-subtitle {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #d1d5db;
+        }
+        
+        .sector-section {
+            padding: 5rem 0;
+        }
+        
+        .sector-section:nth-child(even) {
+            background-color: rgba(29, 35, 54, 0.8);
+        }
+        
+        .sector-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        
+        .sector-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .sector-bubble {
+            width: 400px;
+            height: 400px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .commercial-bubble {
+            background: linear-gradient(135deg, #0062ff, #00d9ff);
+        }
+        
+        .political-bubble {
+            background: linear-gradient(135deg, #6c00ff, #b300ff);
+        }
+        
+        .government-bubble {
+            background: linear-gradient(135deg, #0062ff, #6c00ff);
+        }
+        
+        .nonprofit-bubble {
+            background: linear-gradient(135deg, #00d9ff, #0062ff);
+        }
+        
+        .sector-bubble::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+        
+        .sector-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 6rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .sector-content {
+            flex: 1;
+        }
+        
+        .sector-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .sector-content p {
+            margin-bottom: 1.5rem;
+            color: #d1d5db;
+            font-size: 1.125rem;
+        }
+        
+        .sector-features {
+            margin-top: 2rem;
+        }
+        
+        .sector-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-check {
+            color: var(--accent);
+            font-size: 1.25rem;
+            margin-top: 0.25rem;
+        }
+        
+        .feature-text h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .feature-text p {
+            margin-bottom: 0;
+        }
+        
+        .case-studies-section {
+            padding: 5rem 0;
+            background-color: rgba(17, 24, 39, 0.8);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: linear-gradient(to right, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .case-study-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .case-study-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .case-study-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            position: relative;
+        }
+        
+        .case-study-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .case-study-content {
+            padding: 2rem;
+        }
+        
+        .case-study-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .case-study-content p {
+            color: #d1d5db;
+            margin-bottom: 1.5rem;
+        }
+        
+        .case-study-tag {
+            display: inline-block;
+            background-color: rgba(0, 98, 255, 0.1);
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+        
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(0, 98, 255, 0.1), rgba(108, 0, 255, 0.1));
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+        }
+        
+        .cta-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, white, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .cta-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #d1d5db;
+        }
+        
+        footer {
+            padding: 3rem 0;
+            background-color: rgba(17, 24, 39, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--light);
+            font-size: 1.25rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-nav {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .footer-nav a {
+            color: #d1d5db;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-nav a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.875rem;
+            margin-top: 1.5rem;
+        }
+        
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                position: relative;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background-color: var(--dark);
+                padding: 1rem;
+                gap: 1rem;
+                display: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .sector-container {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            
+            .sector-bubble {
+                width: 300px;
+                height: 300px;
+                margin: 0 auto;
+            }
+            
+            .sector-content {
+                text-align: center;
+            }
+            
+            .sector-feature {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .case-studies-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <span>Tripl7z</span>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="sectors.html">Sectors</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Sectors We Serve</h1>
+            <p class="page-subtitle">Delivering tailored technology solutions across diverse industries and organizational types</p>
+        </div>
+    </section>
+
+    <section class="sector-section">
+        <div class="container">
+            <div class="sector-container">
+                <div class="sector-image">
+                    <div class="sector-bubble commercial-bubble">
+                        <div class="sector-icon">💼</div>
+                    </div>
+                </div>
+                <div class="sector-content">
+                    <h2>Commercial</h2>
+                    <p>At Tripl7z, we partner with businesses of all sizes to drive growth, efficiency, and innovation through strategic technology implementation. Our commercial sector solutions are designed to address the unique challenges businesses face in today's rapidly evolving digital landscape.</p>
+                    <p>From startups looking to scale quickly to established enterprises seeking digital transformation, our team delivers customized technology strategies that align with business objectives and create measurable value.</p>
+                    
+                    <div class="sector-features">
+                        <div class="sector-feature">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <h4>Digital Transformation Initiatives</h4>
+                                <p>Comprehensive strategies to modernize legacy systems, optimize workflows, and create new digital capabilities that drive business growth.</p>
+                            </div>
+                        </div>
+                        <div class="sector-feature">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <h4>Data Analytics & Business Intelligence</h4>
+                                <p>Advanced analytics solutions that transform raw data into actionable insights for informed decision-making and competitive advantage.</p>
+                            </div>
+                        </div>
+                        <div class="sector-feature">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <h4>Enterprise Security Solutions</h4>
+                                <p>Robust cybersecurity frameworks that protect sensitive data, ensure regulatory compliance, and safeguard business operations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="cta-button">Discuss Your Business Needs</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sector-section">
+        <div class="container">
+            <div class="sector-container">
+                <div class="sector-content">
+                    <h2>Political</h2>
+                    <p>The political landscape requires innovative digital strategies to effectively engage constituents, mobilize supporters, and communicate messages that resonate. Tripl7z provides cutting-edge technology solutions specifically designed for campaigns, political organizations, and advocacy groups.</p>
+                    <p>Our political sector expertise combines technical innovation with strategic insight to help organizations achieve their outreach and engagement objectives in an increasingly digital political environment.</p>
+                    
+                    <div class="sector-features">
+                        <div class="sector-feature">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <h4>Digital Campaign Infrastructure</h4>
+                                <p>Scalable, secure technology platforms that support the full spectrum of campaign activities from fundraising to voter outreach.</p>
+                            </div>
+                        </div>
+                        <div class="sector-feature">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <h4>Data-Driven Messaging Strategies</h4>
+                                <p>Advanced analytics and audience targeting tools that help craft and deliver persuasive messages to the right audiences.</p>
+                            </div>
+                        </div>
+                        <div class="sector-feature">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <h4>Digital Mobilization Platforms</h4>
+                                <p>Innovative solutions for volunteer coordination, grassroots organizing, and supporter engagement across multiple channels.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="cta-button">Enhance Your Political Tech</a>
+                </div>
+                <div class="sector-image">
+                    <div class="sector-bubble political-bubble">
+                        <div class="sector-icon">🏛️</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sector-section">
+        <div class="container">
+            <div class="sector-container">
+                <div class="sector-image">
+                    <div class="sector-bubble government-bubble">
+                        <div class="sector-icon">🏢</div>
+                    </div>
+                </div>
+                <div class="sector-content">
+                    <h2>Government</h2>
+                    <p>Modern governance demands technology solutions that improve service delivery, enhance security, and promote transparency. Tripl7z partners with government agencies at all levels to modernize digital infrastructure and optimize operations through innovative technology implementation.</p>
+                    <p>Our government sector solutions are designed with a deep understanding of public sector requirements, including stringent security standards, compliance requirements, and the need for transparent, accessible systems.</p>
+                    
+                    <div class="sector-features">
+                        <div class="sector-feature">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <h4>Digital Service Delivery</h4>
+                                <p>Citizen-centric digital platforms that streamline access to government services and improve user experience while reducing operational costs.</p>
+                            </div>
+                        </div>
+                        <div class="sector-feature">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <h4>Secure Information Systems</h4>
+                                <p>Highly secure technology infrastructure designed to protect sensitive government data while enabling efficient information sharing.</p>
+                            </div>
+                        </div>
+                        <div class="sector-feature">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <h4>Data Analytics for Policy Insights</h4>
+                                <p>Advanced analytics capabilities that transform government data into actionable insights for evidence-based policymaking.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="cta-button">Modernize Government Tech</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sector-section">
+        <div class="container">
+            <div class="sector-container">
+                <div class="sector-content">
+                    <h2>Nonprofit</h2>
+                    <p>Nonprofit organizations face unique challenges in maximizing impact while operating with limited resources. Tripl7z helps mission-driven organizations leverage technology to extend their reach, engage supporters, and streamline operations.</p>
+                    <p>Our nonprofit sector solutions combine technical expertise with a deep understanding of the nonprofit landscape, creating digital capabilities that amplify mission impact and organizational effectiveness.</p>
+                    
+                    <div class="sector-features">
+                        <div class="sector-feature">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <h4>Donor Engagement Platforms</h4>
+                                <p>Digital solutions that enhance donor acquisition, retention, and stewardship through personalized engagement strategies.</p>
+                            </div>
+                        </div>
+                        <div class="sector-feature">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <h4>Impact Measurement Tools</h4>
+                                <p>Data collection and analysis frameworks that help organizations track, measure, and communicate their social impact effectively.</p>
+                            </div>
+                        </div>
+                        <div class="sector-feature">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <h4>Operational Efficiency Solutions</h4>
+                                <p>Technology systems that streamline administrative processes, reduce overhead costs, and allow more resources to be directed toward mission activities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="cta-button">Amplify Your Mission</a>
+                </div>
+                <div class="sector-image">
+                    <div class="sector-bubble nonprofit-bubble">
+                        <div class="sector-icon">🤝</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="case-studies-section">
+        <div class="container">
+            <h2 class="section-title">Client Success Stories</h2>
+            <div class="case-studies-grid">
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <div class="case-study-icon">💼</div>
+                    </div>
+                    <div class="case-study-content">
+                        <div>
+                            <span class="case-study-tag">Commercial</span>
+                            <span class="case-study-tag">Data Analytics</span>
+                        </div>
+                        <h3>Enterprise Data Transformation</h3>
+                        <p>We helped a Fortune 500 company unify disparate data sources and implement a comprehensive analytics platform, resulting in a 35% improvement in decision-making speed and $4.2M in operational savings.</p>
+                        <a href="case-studies.html" class="cta-button">Read Case Study</a>
+                    </div>
+                </div>
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <div class="case-study-icon">🏛️</div>
+                    </div>
+                    <div class="case-study-content">
+                        <div>
+                            <span class="case-study-tag">Political</span>
+                            <span class="case-study-tag">Digital Outreach</span>
+                        </div>
+                        <h3>National Campaign Digital Strategy</h3>
+                        <p>Our team developed a comprehensive digital infrastructure for a national political campaign, enabling targeted messaging that reached 3.5M voters and increased volunteer signups by 215%.</p>
+                        <a href="case-studies.html" class="cta-button">Read Case Study</a>
+                    </div>
+                </div>
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <div class="case-study-icon">🏢</div>
+                    </div>
+                    <div class="case-study-content">
+                        <div>
+                            <span class="case-study-tag">Government</span>
+                            <span class="case-study-tag">Digital Services</span>
+                        </div>
+                        <h3>Municipal Service Modernization</h3>
+                        <p>We partnered with a major city to transform citizen service delivery through an integrated digital platform, reducing processing times by 68% and improving satisfaction scores by 47%.</p>
+                        <a href="case-studies.html" class="cta-button">Read Case Study</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Organization?</h2>
+                <p>Let's discuss how our sector-specific expertise can help you achieve your technology objectives and drive meaningful results.</p>
+                <a href="contact.html" class="cta-button">Schedule a Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Tripl7z</div>
+                <div class="social-links">
+                    <a href="social-media.html">📱</a>
+                    <a href="https://www.linkedin.com/in/brian-m-b595bb120/">💼</a>
+                    <a href="social-media.html">🐦</a>
+                    <a href="social-media.html">📸</a>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="careers.html">Careers</a>
+                <a href="blog.html">Blog</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Tripl7z, LLC. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const navLinks = document.querySelector('.nav-links');
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
