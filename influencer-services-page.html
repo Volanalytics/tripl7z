@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripl7z LLC - Influencer Agent Services</title>
+    <style>
+        :root {
+            --primary: #0062ff;
+            --secondary: #6c00ff;
+            --dark: #111827;
+            --light: #f3f4f6;
+            --accent: #00d9ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        header {
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            background-color: rgba(17, 24, 39, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .cta-button {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .hero-section {
+            padding-top: 120px;
+            padding-bottom: 100px;
+            background: linear-gradient(to bottom, rgba(17, 24, 39, 0.95), rgba(17, 24, 39, 0.8));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 98, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(108, 0, 255, 0.15) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, white, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-text p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #d1d5db;
+        }
+        
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .hero-bubble {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            opacity: 0.8;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bubble::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+        
+        .features-section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: linear-gradient(to right, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .feature-card p {
+            color: #d1d5db;
+        }
+        
+        .workflow-section {
+            padding: 5rem 0;
+            background-color: rgba(29, 35, 54, 0.8);
+        }
+        
+        .workflow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .workflow-step {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        
+        .step-number-container {
+            flex-shrink: 0;
+        }
+        
+        .step-number {
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 50%;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        
+        .step-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .step-content p {
+            color: #d1d5db;
+            margin-bottom: 1rem;
+        }
+        
+        .step-content ul {
+            color: #d1d5db;
+            margin-left: 1.5rem;
+        }
+        
+        .step-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .testimonials-section {
+            padding: 5rem 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+        }
+        
+        .testimonial-content {
+            color: #d1d5db;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .testimonial-content::before,
+        .testimonial-content::after {
+            content: '"';
+            font-size: 2rem;
+            color: rgba(0, 217, 255, 0.3);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: white;
+        }
+        
+        .author-info h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .author-info p {
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
+        
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(0, 98, 255, 0.1), rgba(108, 0, 255, 0.1));
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+        }
+        
+        .cta-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, white, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .cta-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #d1d5db;
+        }
+        
+        footer {
+            padding: 3rem 0;
+            background-color: rgba(17, 24, 39, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--light);
+            font-size: 1.25rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-nav {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .footer-nav a {
+            color: #d1d5db;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-nav a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.875rem;
+            margin-top: 1.5rem;
+        }
+        
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                position: relative;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background-color: var(--dark);
+                padding: 1rem;
+                gap: 1rem;
+                display: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-bubble {
+                width: 300px;
+                height: 300px;
+                margin: 0 auto;
+            }
+            
+            .workflow-step {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <span>Tripl7z</span>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="sectors.html">Sectors</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Influencer Agent Services</h1>
+                <p>Connect with the perfect influencers to amplify your message and build authentic engagement with your target audiences through our AI-powered matching and campaign management platform.</p>
+                <a href="contact.html" class="cta-button">Schedule a Consultation</a>
+            </div>
+            <div class="hero-image">
+                <div class="hero-bubble"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>AI-Powered Matching</h3>
+                    <p>Our proprietary algorithm analyzes millions of data points to identify the perfect influencers for your specific campaign goals, audience demographics, and brand values.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Advanced Analytics</h3>
+                    <p>Gain deep insights into campaign performance with real-time metrics tracking engagement, reach, conversions, and ROI across all platforms and influencer partnerships.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Multi-Platform Management</h3>
+                    <p>Seamlessly coordinate influencer activities across all major social platforms including Instagram, TikTok, YouTube, Twitter, and emerging channels in one unified dashboard.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Content Oversight</h3>
+                    <p>Maintain brand consistency while allowing for authentic creator expression with our collaborative content review and approval workflows.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Audience Insights</h3>
+                    <p>Access detailed demographic and psychographic data on influencer audiences to ensure precise targeting and maximum campaign impact.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚖️</div>
+                    <h3>Compliance Management</h3>
+                    <p>Ensure all influencer partnerships meet FTC guidelines and other regulatory requirements with automated disclosure monitoring and compliance tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="workflow-section">
+        <div class="container">
+            <h2 class="section-title">Our Approach</h2>
+            <div class="workflow-steps">
+                <div class="workflow-step">
+                    <div class="step-number-container">
+                        <div class="step-number">1</div>
+                    </div>
+                    <div class="step-content">
+                        <h3>Strategy Development</h3>
+                        <p>We begin by understanding your organization's goals, target audience, and key messages to develop a comprehensive influencer strategy aligned with your broader objectives.</p>
+                        <ul>
+                            <li>In-depth discovery session with your team</li>
+                            <li>Competitive landscape analysis</li>
+                            <li>Audience profiling and segmentation</li>
+                            <li>Campaign goals and KPI definition</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number-container">
+                        <div class="step-number">2</div>
+                    </div>
+                    <div class="step-content">
+                        <h3>Influencer Identification & Vetting</h3>
+                        <p>Our AI-powered platform identifies ideal influencer partners based on your specific requirements, followed by thorough human verification and background checks.</p>
+                        <ul>
+                            <li>Algorithmic matching across millions of creator profiles</li>
+                            <li>Authenticity and engagement analysis</li>
+                            <li>Historical content and partnership review</li>
+                            <li>Values alignment assessment</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number-container">
+                        <div class="step-number">3</div>
+                    </div>
+                    <div class="step-content">
+                        <h3>Campaign Execution</h3>
+                        <p>We manage all aspects of the influencer relationship from initial outreach and negotiation through content development, publication scheduling, and performance tracking.</p>
+                        <ul>
+                            <li>Seamless influencer onboarding and briefing</li>
+                            <li>Collaborative content development</li>
+                            <li>Strategic publishing calendar management</li>
+                            <li>Real-time campaign monitoring and optimization</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number-container">
+                        <div class="step-number">4</div>
+                    </div>
+                    <div class="step-content">
+                        <h3>Analysis & Optimization</h3>
+                        <p>Our team provides comprehensive performance analysis and strategic recommendations to continuously enhance your influencer marketing effectiveness.</p>
+                        <ul>
+                            <li>Multi-dimensional performance analytics</li>
+                            <li>Benchmark comparisons and competitive insights</li>
+                            <li>ROI assessment and attribution modeling</li>
+                            <li>Strategic optimization and future campaign planning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Client Success Stories</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        Tripl7z's Influencer Agent platform transformed our digital outreach strategy. The precision of their AI matching algorithm connected us with ideal partners who genuinely resonated with our message, resulting in engagement rates 3x higher than our previous campaigns.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div class="author-info">
+                            <h4>Jennifer Davis</h4>
+                            <p>Marketing Director, TechInnovate</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        The analytics capabilities of their platform gave us unprecedented insights into our campaign performance. We could see exactly which messages were resonating and optimize in real-time, leading to a 40% increase in conversion rates compared to traditional digital advertising.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div class="author-info">
+                            <h4>Michael Rodriguez</h4>
+                            <p>Campaign Manager, PolicyNow</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        Working with Tripl7z allowed us to scale our influencer program efficiently while maintaining strict compliance standards. Their team's expertise in both the technical and strategic aspects of influencer marketing was invaluable to our organization's outreach objectives.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SC</div>
+                        <div class="author-info">
+                            <h4>Sarah Chen</h4>
+                            <p>Communications Director, GreenFuture Initiative</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Amplify Your Message?</h2>
+                <p>Let our Influencer Agent platform connect you with the perfect network of digital voices to enhance your organization's reach and impact.</p>
+                <a href="contact.html" class="cta-button">Schedule a Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Tripl7z</div>
+                <div class="social-links">
+                    <a href="social-media.html">📱</a>
+                    <a href="https://www.linkedin.com/in/brian-m-b595bb120/">💼</a>
+                    <a href="social-media.html">🐦</a>
+                    <a href="social-media.html">📸</a>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="careers.html">Careers</a>
+                <a href="blog.html">Blog</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Tripl7z, LLC. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
