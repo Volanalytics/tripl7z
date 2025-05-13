@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripl7z LLC - Careers</title>
+    <style>
+        :root {
+            --primary: #0062ff;
+            --secondary: #6c00ff;
+            --dark: #111827;
+            --light: #f3f4f6;
+            --accent: #00d9ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        header {
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            background-color: rgba(17, 24, 39, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .cta-button {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .page-header {
+            padding-top: 120px;
+            padding-bottom: 40px;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(17, 24, 39, 0.95), rgba(17, 24, 39, 0.8));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 98, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(108, 0, 255, 0.15) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, white, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .page-subtitle {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #d1d5db;
+        }
+        
+        .culture-section {
+            padding: 5rem 0;
+        }
+        
+        .culture-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        
+        .culture-content {
+            flex: 1;
+        }
+        
+        .culture-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .culture-content p {
+            margin-bottom: 1.5rem;
+            color: #d1d5db;
+            font-size: 1.125rem;
+        }
+        
+        .culture-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .culture-bubble {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            opacity: 0.8;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .culture-bubble::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+        
+        .benefits-section {
+            padding: 5rem 0;
+            background-color: rgba(29, 35, 54, 0.8);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: linear-gradient(to right, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .benefit-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .benefit-card p {
+            color: #d1d5db;
+        }
+        
+        .openings-section {
+            padding: 5rem 0;
+        }
+        
+        .openings-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .job-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .job-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .job-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+        
+        .job-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .job-meta-icon {
+            color: var(--accent);
+        }
+        
+        .job-tag {
+            display: inline-block;
+            background-color: rgba(0, 98, 255, 0.1);
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+        
+        .job-description {
+            color: #d1d5db;
+            margin-bottom: 1.5rem;
+        }
+        
+        .job-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .secondary-button {
+            background-color: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .secondary-button:hover {
+            background-color: rgba(0, 217, 255, 0.1);
+        }
+        
+        .process-section {
+            padding: 5rem 0;
+            background-color: rgba(29, 35, 54, 0.8);
+        }
+        
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .process-step {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        
+        .step-number-container {
+            flex-shrink: 0;
+        }
+        
+        .step-number {
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 50%;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        
+        .step-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .step-content p {
+            color: #d1d5db;
+        }
+        
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(0, 98, 255, 0.1), rgba(108, 0, 255, 0.1));
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+        }
+        
+        .cta-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, white, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .cta-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #d1d5db;
+        }
+        
+        footer {
+            padding: 3rem 0;
+            background-color: rgba(17, 24, 39, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--light);
+            font-size: 1.25rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-nav {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .footer-nav a {
+            color: #d1d5db;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-nav a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.875rem;
+            margin-top: 1.5rem;
+        }
+        
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                position: relative;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background-color: var(--dark);
+                padding: 1rem;
+                gap: 1rem;
+                display: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .culture-container {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            
+            .culture-bubble {
+                width: 300px;
+                height: 300px;
+                margin: 0 auto;
+            }
+            
+            .process-step {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <span>Tripl7z</span>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="sectors.html">Sectors</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Join Our Team</h1>
+            <p class="page-subtitle">Build your career at the forefront of technology innovation, solving complex challenges for high-profile clients</p>
+        </div>
+    </section>
+
+    <section class="culture-section">
+        <div class="container culture-container">
+            <div class="culture-content">
+                <h2>Our Culture</h2>
+                <p>At Tripl7z, we've built a culture centered on innovation, collaboration, and impact. We bring together exceptional talent from diverse backgrounds, united by a shared passion for solving complex technology challenges.</p>
+                <p>Our team members thrive in an environment that encourages creative thinking, values expertise, and provides the freedom to explore new approaches. We believe that the best solutions emerge when different perspectives converge around challenging problems.</p>
+                <p>We're committed to fostering an inclusive workplace where everyone feels valued, respected, and empowered to contribute their unique talents. Our collaborative approach extends beyond our internal teams to our client partnerships, where we work together to drive meaningful results through technology.</p>
+            </div>
+            <div class="culture-image">
+                <div class="culture-bubble"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Benefits & Perks</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏥</div>
+                    <h3>Comprehensive Healthcare</h3>
+                    <p>We offer premium medical, dental, and vision coverage for employees and their families, with the majority of premiums covered by Tripl7z.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Competitive Compensation</h3>
+                    <p>Receive competitive base salary, performance bonuses, and equity opportunities that reward your contributions to our collective success.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏝️</div>
+                    <h3>Flexible PTO</h3>
+                    <p>Our unlimited paid time off policy ensures you can maintain work-life balance and recharge when needed.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🧠</div>
+                    <h3>Professional Development</h3>
+                    <p>Access to conferences, workshops, courses, and certifications to help you grow your skills and advance your career.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💻</div>
+                    <h3>Remote Work Options</h3>
+                    <p>Flexible work arrangements including hybrid and remote options, with stipends for home office setup.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚀</div>
+                    <h3>Career Growth</h3>
+                    <p>Clear paths for advancement and opportunities to work on high-impact projects across various sectors and technologies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="openings-section">
+        <div class="container">
+            <h2 class="section-title">Current Openings</h2>
+            <div class="openings-container">
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Senior Software Engineer</h3>
+                            <div class="job-meta">
+                                <div class="job-meta-item">
+                                    <span class="job-meta-icon">📍</span>
+                                    <span>Nashville, TN / Remote</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <span class="job-meta-icon">💼</span>
+                                    <span>Full-time</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-tag">Engineering</div>
+                    </div>
+                    <p class="job-description">We're seeking an experienced software engineer to design and implement scalable solutions for our clients across various sectors. You'll work on challenging projects utilizing modern technologies and best practices.</p>
+                    <div class="job-actions">
+                        <a href="job-senior-engineer.html" class="cta-button">View Details</a>
+                        <a href="mailto:careers@tripl7z.com?subject=Senior Software Engineer Application" class="secondary-button">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">AI/ML Specialist</h3>
+                            <div class="job-meta">
+                                <div class="job-meta-item">
+                                    <span class="job-meta-icon">📍</span>
+                                    <span>Nashville, TN / Remote</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <span class="job-meta-icon">💼</span>
+                                    <span>Full-time</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-tag">Data Science</div>
+                    </div>
+                    <p class="job-description">Join our team to develop and implement advanced AI/ML solutions that solve complex business challenges. You'll work on cutting-edge projects including our Influencer Agent platform and custom client implementations.</p>
+                    <div class="job-actions">
+                        <a href="job-ai-specialist.html" class="cta-button">View Details</a>
+                        <a href="mailto:careers@tripl7z.com?subject=AI/ML Specialist Application" class="secondary-button">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Cybersecurity Consultant</h3>
+                            <div class="job-meta">
+                                <div class="job-meta-item">
+                                    <span class="job-meta-icon">📍</span>
+                                    <span>Nashville, TN / Remote</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <span class="job-meta-icon">💼</span>
+                                    <span>Full-time</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-tag">Security</div>
+                    </div>
+                    <p class="job-description">Help our clients protect their digital assets by designing and implementing robust security solutions. You'll conduct assessments, develop security strategies, and respond to evolving threats.</p>
+                    <div class="job-actions">
+                        <a href="job-security-consultant.html" class="cta-button">View Details</a>
+                        <a href="mailto:careers@tripl7z.com?subject=Cybersecurity Consultant Application" class="secondary-button">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">Our Hiring Process</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number-container">
+                        <div class="step-number">1</div>
+                    </div>
+                    <div class="step-content">
+                        <h3>Application Review</h3>
+                        <p>Our recruitment team carefully reviews your application, resume, and portfolio to assess your experience and alignment with our team's needs. We aim to respond to all applications within one week.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number-container">
+                        <div class="step-number">2</div>
+                    </div>
+                    <div class="step-content">
+                        <h3>Initial Conversation</h3>
+                        <p>If your background matches our needs, we'll schedule a 30-45 minute video call to discuss your experience, career goals, and answer any questions you might have about Tripl7z and the role.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number-container">
+                        <div class="step-number">3</div>
+                    </div>
+                    <div class="step-content">
+                        <h3>Technical Assessment</h3>
+                        <p>Depending on the role, we'll ask you to complete a take-home project or participate in a technical interview. This helps us understand your problem-solving approach and technical expertise in a real-world context.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number-container">
+                        <div class="step-number">4</div>
+                    </div>
+                    <div class="step-content">
+                        <h3>Team Interviews</h3>
+                        <p>Meet with potential teammates and leaders across the organization to dive deeper into your experience and get a feel for our culture. These conversations will focus on both technical skills and collaboration style.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number-container">
+                        <div class="step-number">5</div>
+                    </div>
+                    <div class="step-content">
+                        <h3>Offer & Onboarding</h3>
+                        <p>If there's a strong mutual fit, we'll extend an offer and work closely with you through the onboarding process to ensure a smooth transition to your new role at Tripl7z.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Don't See the Perfect Role?</h2>
+                <p>We're always looking for exceptional talent to join our team. Send us your resume and tell us how you could contribute to Tripl7z's mission.</p>
+                <a href="mailto:careers@tripl7z.com?subject=General Application" class="cta-button">Submit Your Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Tripl7z</div>
+                <div class="social-links">
+                    <a href="social-media.html">📱</a>
+                    <a href="https://www.linkedin.com/in/brian-m-b595bb120/">💼</a>
+                    <a href="social-media.html">🐦</a>
+                    <a href="social-media.html">📸</a>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="careers.html">Careers</a>
+                <a href="blog.html">Blog</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Tripl7z, LLC. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
